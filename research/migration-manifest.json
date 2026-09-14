@@ -1,0 +1,24 @@
+{
+  "migratedAt": "2026-09-14",
+  "snapshot": "research/snapshots/opencodev-solutions-2026-09-14.html",
+  "snapshotSha256": "5f160f6c18590224ba23974719211a5c7c847c8521de46807eb2d41038f1d7cd",
+  "input": {
+    "industries": 14,
+    "segments": 83,
+    "scenarios": 193
+  },
+  "output": {
+    "scenarios": 193,
+    "indexFieldsPerRecord": 13,
+    "detailFieldsPerRecord": 39,
+    "detailFiles": 193,
+    "homepageSelections": 3
+  },
+  "excludedFields": [
+    "script",
+    "demoUrl",
+    "demoDevice",
+    "aiBonus"
+  ],
+  "publicLabel": "参考方案"
+}
