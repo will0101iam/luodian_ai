@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "migrate:cases": "node scripts/migrate-public-cases.mjs",
     "audit:copy": "node scripts/audit-public-copy.mjs",
-    "verify:ui": "node scripts/verify-library.mjs"
+    "verify:ui": "node scripts/verify-library.mjs",
+    "test:demos": "node scripts/test-demo-engine.mjs && node scripts/test-business-engine.mjs"
   },
   "dependencies": {
     "lucide": "^0.468.0"

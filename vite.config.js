@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         home: resolve(import.meta.dirname, "index.html"),
         cases: resolve(import.meta.dirname, "cases/index.html"),
+        demos: resolve(import.meta.dirname, "demos/index.html"),
       },
     },
   },

@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="落点 AI 为企业提供流程诊断、小范围试点和系统实施服务。先解决一个具体问题，再决定是否扩大投入。" />
+    <meta name="description" content="面向平湖箱包、服装、童车与制造企业，体验微信转 CRM、订单变更检查和单据核对，让业务信息接上现有管理系统。" />
     <meta name="theme-color" content="#15271f" />
     <link rel="icon" href="data:," />
-    <link rel="preconnect" href="https://copilot-cn.bytedance.net" />
     <title>落点 AI · 企业 AI 转型服务</title>
   </head>
   <body class="home-body">
@@ -18,6 +17,7 @@
         <a class="brand" href="/">落点 <span>AI</span></a>
         <span class="brand-caption">企业流程改进与 AI 应用</span>
         <nav class="primary-nav home-nav" id="home-nav" aria-label="主导航">
+          <a href="/demos/">行业体验台</a>
           <a href="#services">服务</a>
           <a href="#method">方法</a>
           <a href="/cases/">案例库</a>
@@ -29,23 +29,35 @@
     </header>
     <main id="main" tabindex="-1">
       <section class="home-hero">
-        <img
-          class="home-hero-image"
-          data-hero-image
-          src="https://copilot-cn.bytedance.net/api/ide/v1/text_to_image?prompt=Photorealistic%20editorial%20documentary%20photograph%20of%20a%20Chinese%20business%20operations%20leader%20and%20AI%20consultant%20reviewing%20a%20workflow%20on%20a%20tablet%20inside%20a%20modern%20precision%20manufacturing%20facility%2C%20real%20machinery%20and%20production%20context%2C%20bright%20natural%20daylight%2C%20candid%20professional%20collaboration%2C%20wide%20editorial%20composition%2C%20subjects%20on%20right%2C%20clean%20dark%20negative%20space%20on%20left%2C%20no%20text%2C%20no%20logos%2C%20no%20holograms%2C%20no%20stock%20photo%20posing&image_size=landscape_16_9"
-          alt="企业运营负责人在生产现场与 AI 顾问讨论业务流程"
-          fetchpriority="high"
-        />
         <div class="home-hero-fallback" aria-hidden="true">
           <div class="workflow-map"><span>BUSINESS FLOW / 01</span><ol><li><b>01</b><strong>业务输入</strong><small>现有系统与工作记录</small></li><li><b>02</b><strong>辅助处理</strong><small>识别、核对与建议</small></li><li><b>03</b><strong>人工决策</strong><small>责任人确认并留痕</small></li></ol></div>
         </div>
         <div class="home-hero-shade"></div>
         <div class="home-container hero-content">
-          <p class="eyebrow light">落点 AI / LUODIAN.AI</p>
-          <h1>企业 AI 转型服务</h1>
-          <p>先找出一个经常发生、结果可衡量的问题。用现有数据做小范围验证，再决定是否投入更多。</p>
-          <div class="hero-actions"><button class="button hero-primary" data-contact>讨论一个业务问题 <i data-lucide="arrow-right"></i></button><a class="button hero-secondary" href="/cases/">浏览案例库</a></div>
+          <p class="eyebrow light">落点 AI / 服务平湖与嘉兴企业</p>
+          <h1>让业务信息，<br />接上现有系统。</h1>
+          <p>从客户跟进、询盘报价，到订单交付与成本测算。用可操作的业务场景，看看 AI 如何接上你已有的 CRM 和 ERP。</p>
+          <div class="hero-actions"><a class="button hero-primary" href="/demos/">亲手体验业务 Demo <i data-lucide="arrow-right"></i></a><button class="button hero-secondary" data-contact>讨论一个业务问题</button></div>
           <div class="hero-index"><span>01 / 流程诊断</span><span>02 / 小范围验证</span><span>03 / 系统实施</span></div>
+        </div>
+      </section>
+      <section class="home-demos" id="demos">
+        <div class="home-container">
+          <div class="home-section-heading"><div><p class="eyebrow">PINGHU · INTERACTIVE DEMOS</p><h2>这些事，你是不是也在做？</h2></div><p class="demo-section-note">8 个可操作场景，从日常提效到销售增长与经营决策。</p></div>
+          <div class="demo-entry-grid">
+            <a class="demo-entry" href="/demos/#crm"><div class="demo-entry-top"><span>01 / 销售跟进</span><small>箱包 · 机床</small></div><div class="demo-mini chat-mini"><span>“先要 800 个，周五前给个报价。”</span><div><b>意向数量 <em>800 个</em></b><b>跟进任务 <em>周五前报价</em></b></div></div><h3>聊完客户，还要再填 CRM？</h3><p>整理需求、补齐字段，把下一步跟进记下来。</p><strong>体验微信转 CRM <i data-lucide="arrow-up-right"></i></strong></a>
+            <a class="demo-entry" href="/demos/#order"><div class="demo-entry-top"><span>02 / 订单变更</span><small>服装 · 童车</small></div><div class="demo-mini change-mini"><div><span>L 码</span><del>600 件</del><b>400 件</b></div><div><span>XL 码</span><del>400 件</del><b>600 件</b></div><small>总量没变，尺码结构变了</small></div><h3>“就改几处”，都同步了吗？</h3><p>对照原订单，发现数量、配置与版本变化。</p><strong>体验订单变更检查 <i data-lucide="arrow-up-right"></i></strong></a>
+            <a class="demo-entry" href="/demos/#reconcile"><div class="demo-entry-top"><span>03 / 采购对账</span><small>工厂 · 配套企业</small></div><div class="demo-mini ledger-mini"><div><span>订购</span><span>实收</span><span>对账</span></div><div><b>1,000</b><b>980</b><b>1,000</b></div><small>数量差 20 件，等待核实</small></div><h3>月底对账，总在找差异？</h3><p>先找出错价、少货和重复记录，再确认原因。</p><strong>体验单据核对 <i data-lucide="arrow-up-right"></i></strong></a>
+          </div>
+          <div class="home-workbench-heading"><p class="eyebrow">GROWTH & OPERATIONS</p><h3>再往前一步，让业务动起来。</h3><p>跟进谁、报什么价、怎么交货——放到同一个业务现场，亲手做一次判断。</p></div>
+          <div class="demo-entry-grid business-entry-grid">
+            <a class="demo-entry" href="/demos/#sales"><div class="demo-entry-top"><span>04 / CRM 销售</span><small>箱包 · 童车 · 机床</small></div><div class="demo-mini business-mini"><b>8 天未推进</b><span>客户在等环保包装差价</span></div><h3>客户不少，今天先跟进谁？</h3><p>查看商机依据、编辑沟通草稿，安排有针对性的下一步。</p><strong>体验销售跟进工作台 <i data-lucide="arrow-up-right"></i></strong></a>
+            <a class="demo-entry" href="/demos/#inquiries"><div class="demo-entry-top"><span>05 / 线索承接</span><small>展会 · 邮件 · 官网</small></div><div class="demo-mini business-mini"><b>3 个来源</b><span>查重 → 补问 → 分配销售</span></div><h3>展会回来，线索怎么接住？</h3><p>把采购需求和缺失信息看清楚，再转入商机跟进。</p><strong>体验询盘转商机 <i data-lucide="arrow-up-right"></i></strong></a>
+            <a class="demo-entry" href="/demos/#quotes"><div class="demo-entry-top"><span>06 / 报价协同</span><small>箱包外贸</small></div><div class="demo-mini business-mini"><b>$25.2 → $27.4</b><span>FOB 变 CIF，真的涨价了吗？</span></div><h3>报价改了三轮，哪版算数？</h3><p>对比包装、运费与条款，保持客户与内部报价口径一致。</p><strong>体验报价版本协同 <i data-lucide="arrow-up-right"></i></strong></a>
+            <a class="demo-entry" href="/demos/#delivery"><div class="demo-entry-top"><span>07 / ERP 协同</span><small>箱包制造 · 采购</small></div><div class="demo-mini business-mini"><b>缺料 600 套</b><span>等齐料 / 分批 / 加急</span></div><h3>还有一周出货，缺料怎么办？</h3><p>比较三个补救方案的交期、成本与前提，形成协调单。</p><strong>体验订单交付推演 <i data-lucide="arrow-up-right"></i></strong></a>
+            <a class="demo-entry" href="/demos/#costing"><div class="demo-entry-top"><span>08 / 成本决策</span><small>箱包 · 童车 · 机加工</small></div><div class="demo-mini business-mini"><b>再让利 5%？</b><span>改数量和成本，看真实毛利变化</span></div><h3>客户再压价，这单还能接吗？</h3><p>拆开成本与工装分摊，测算报价和让利后的利润。</p><strong>体验成本与报价测算 <i data-lucide="arrow-up-right"></i></strong></a>
+          </div>
+          <p class="home-demo-note">交互场景演示 · 使用虚构样例与本地规则，可修改输入、复核并导出。未连接真实业务系统，非客户交付实绩。</p>
         </div>
       </section>
       <section class="home-intro" id="services">
