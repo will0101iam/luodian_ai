@@ -1,0 +1,49 @@
+.about-body { background: white; }
+
+/* Hero */
+.about-hero { background: #15271f; color: white; padding: 132px 0 76px; }
+.about-hero .eyebrow.light { color: #d5dfd7; margin-bottom: 16px; }
+.about-hero h1 { color: white; font-size: clamp(38px, 4.6vw, 56px); max-width: 720px; }
+.about-lede { max-width: 720px; margin-top: 24px; color: rgb(255 255 255 / 80%); font-size: 18px; line-height: 1.9; }
+.about-hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 760px; margin-top: 48px; padding-top: 28px; border-top: 1px solid rgb(255 255 255 / 22%); }
+.about-hero-facts strong { display: block; font-family: var(--serif); font-size: 30px; font-weight: 600; color: white; }
+.about-hero-facts span { display: block; margin-top: 8px; font-size: 13px; color: rgb(255 255 255 / 62%); line-height: 1.7; }
+
+/* Generic section */
+.about-section { padding: 84px 0; border-bottom: 1px solid var(--line); }
+.about-section-title { font-family: var(--serif); font-size: clamp(28px, 3vw, 36px); font-weight: 600; margin: 14px 0 44px; }
+.about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; align-items: start; }
+.about-grid h2 { font-family: var(--serif); font-size: clamp(26px, 2.6vw, 32px); font-weight: 600; margin-top: 12px; }
+.about-intro-body p { color: var(--muted); font-size: 16px; line-height: 1.95; }
+.about-intro-body p + p { margin-top: 20px; }
+
+/* Experience-style credential grid (reused by capability section) */
+
+/* How I work */
+.about-work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-block: 1px solid var(--line); }
+.about-work-grid article { padding: 30px 34px 34px 0; }
+.about-work-grid article + article { border-left: 1px solid var(--line); padding-left: 34px; }
+.about-work-grid span { color: var(--wine); font-family: var(--serif); font-size: 19px; }
+.about-work-grid h3 { font-family: var(--serif); font-size: 21px; margin: 28px 0 12px; }
+.about-work-grid p { color: var(--muted); font-size: 15px; line-height: 1.9; }
+
+/* Credentials / capability grid */
+.about-cred-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; align-items: start; }
+.about-cred-list { margin: 14px 0 0; padding: 0; list-style: none; }
+.about-cred-list li { position: relative; padding: 0 0 18px 22px; color: var(--muted); font-size: 15px; line-height: 1.9; }
+.about-cred-list li::before { content: ""; position: absolute; left: 0; top: 12px; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.about-cred-list a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+
+/* CTA reuse */
+.about-cta { border-bottom: 0; }
+
+@media (max-width: 900px) {
+  .about-hero { padding: 116px 0 60px; }
+  .about-hero-facts { grid-template-columns: 1fr; gap: 20px; }
+  .about-grid, .about-cred-grid { grid-template-columns: 1fr; gap: 28px; }
+  .about-work-grid { grid-template-columns: 1fr; }
+  .about-work-grid article { padding: 24px 0; border-top: 1px solid var(--line); }
+  .about-work-grid article:first-child { border-top: 0; }
+  .about-work-grid article + article { border-left: 0; padding-left: 0; }
+  .about-work-grid h3 { margin-top: 18px; }
+}

@@ -1,7 +1,7 @@
 // Deliberately bounded, local demo rules. No model or production-system calls.
 export const crmSamples = {
-  luggage: '客户：陈经理\n公司：平湖示例箱包贸易\n上次那个20寸拉杆箱，德国客户想先要800个。还是黑色，轮子要静音轮。\n你周五前给我个报价，最好下个月中旬能走。',
-  machine: '客户：周经理\n公司：平湖示例精密制造\n我们想采购2台数控车床，用来加工铝件。\n周三前给我个报价，下个月交货。具体精度要求我再问一下工程师。',
+  luggage: '客户：陈经理\n公司：示例箱包贸易\n上次那个20寸拉杆箱，德国客户想先要800个。还是黑色，轮子要静音轮。\n你周五前给我个报价，最好下个月中旬能走。',
+  machine: '客户：周经理\n公司：示例精密制造\n我们想采购2台数控车床，用来加工铝件。\n周三前给我个报价，下个月交货。具体精度要求我再问一下工程师。',
 };
 
 export function extractCRM(text) {

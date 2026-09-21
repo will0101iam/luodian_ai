@@ -161,6 +161,10 @@ input[type="checkbox"] { accent-color: var(--green); width: 15px; height: 15px; 
 .footer-inner .brand { font-size: 20px; color: var(--ink); }
 .footer-inner .brand span { font-size: 16px; }
 .footer-inner > span { margin-left: auto; }
+.footer-contact { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-left: auto; }
+.footer-contact a, .footer-contact span { color: var(--muted); }
+.footer-contact a:hover { color: var(--green); }
+.footer-inner .footer-contact + a, .footer-inner .footer-contact + span { margin-left: 0; }
 
 /* Detail pages keep the same archive grid, with a narrower reading measure. */
 .breadcrumb { display: flex; align-items: center; gap: 14px; font-size: 12px; color: var(--muted); padding: 23px 0; flex-wrap: wrap; }

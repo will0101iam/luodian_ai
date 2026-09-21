@@ -1,57 +1,14 @@
 import "./library.css";
 import "./home.css";
-import { createIcons, ArrowUpRight, ArrowRight, Download, Menu, X } from "lucide";
-import homeData from "./home-data.json";
+import "./about.css";
+import { createIcons, ArrowUpRight, X } from "lucide";
 
-const iconSet = { ArrowUpRight, ArrowRight, Download, Menu, X };
-const selected = homeData.selected;
-const hero = document.querySelector(".home-hero");
-const heroImage = document.querySelector("[data-hero-image]");
+const iconSet = { ArrowUpRight, X };
 const dialog = document.querySelector("#contact-dialog");
-const navToggle = document.querySelector("[data-nav-toggle]");
-const nav = document.querySelector("#home-nav");
 
 function renderIcons(root = document) {
   createIcons({ icons: iconSet, attrs: { "aria-hidden": "true" }, root });
 }
-function escapeHtml(text) {
-  return String(text).replace(/[&<>"']/g, (char) => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
-  })[char]);
-}
-function validateHeroImage() {
-  if (!heroImage?.complete || !heroImage.naturalWidth) return;
-  const aspect = heroImage.naturalWidth / heroImage.naturalHeight;
-  const valid = aspect > 1.4;
-  hero?.classList.toggle("has-photo", valid);
-  heroImage.setAttribute("aria-hidden", String(!valid));
-}
-heroImage?.addEventListener("load", validateHeroImage);
-heroImage?.addEventListener("error", () => {
-  hero?.classList.remove("has-photo");
-  heroImage?.setAttribute("aria-hidden", "true");
-});
-validateHeroImage();
-document.querySelector("[data-selected-cases]").innerHTML = selected.map((item) => `
-  <article>
-    <div><span>${escapeHtml(item.industry)}</span><small>RESEARCH / ${item.number}</small></div>
-    <h3><a href="/cases/?case=${item.id}">${escapeHtml(item.title)}</a></h3>
-    <p>${escapeHtml(item.problem)}</p>
-    <a href="/cases/?case=${item.id}">阅读方案 <i data-lucide="arrow-up-right"></i></a>
-  </article>
-`).join("");
-document.querySelector("[data-industry-count]").textContent = homeData.counts.industries;
-document.querySelector("[data-case-count]").textContent = homeData.counts.cases;
-
-function setNavigation(open) {
-  navToggle.setAttribute("aria-expanded", String(open));
-  navToggle.setAttribute("aria-label", open ? "关闭导航" : "打开导航");
-  nav.classList.toggle("is-open", open);
-  navToggle.innerHTML = `<i data-lucide="${open ? "x" : "menu"}"></i>`;
-  renderIcons(navToggle);
-}
-navToggle.addEventListener("click", () => setNavigation(navToggle.getAttribute("aria-expanded") !== "true"));
-nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setNavigation(false)));
 
 document.addEventListener("click", (event) => {
   const button = event.target.closest("button");

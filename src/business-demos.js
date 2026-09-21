@@ -52,7 +52,7 @@ export function mountBusinessDemo(host, key, api) {
   const empty = text => s.busy ? processing() : `<div class="biz-empty"><span>AI 辅助判断</span><h3>${text}</h3><p>读取业务依据，逐步给出建议。结果由你复核，确认后形成下一步行动。</p>${btn('analyze', '开始分析 →', true, s.busy)}</div>`;
   const saved = text => `<div class="biz-saved" role="status">✓ ${text} · 仅本次页面有效 ${btn('export', '查看 / 导出')}</div>`;
   function render() {
-    host.innerHTML = `<div class="demo-breadcrumb"><span>业务工作台</span><span> / ${c.name}</span><span class="sample-badge">虚构业务样例</span></div><section class="scenario-heading"><p class="eyebrow">WORKSPACE ${c.num} <span> / ${c.industry}</span></p><h1>${c.title}</h1><p>${c.desc}</p></section><div class="biz-toolbar"><span><i class="live-dot"></i> 演示基准日 2026-09-18 · 数据为固定样例</span>${btn('reset', '重置此工作台')}</div><div class="biz-workspace" aria-busy="${s.busy}">${({ sales: renderSales, inquiries: renderInquiries, quotes: renderQuotes, delivery: renderDelivery, costing: renderCosting })[key]()}</div><section class="demo-benefits"><div><p class="eyebrow">接上已有系统</p><h2>${c.system}</h2><p>读取业务记录 → 提出有依据的建议 → 人工确认 → 形成执行草稿</p></div>${btn('brief', '聊聊我的业务 ↗')}</section>`;
+    host.innerHTML = `<div class="demo-breadcrumb"><span>业务工作台</span><span> / ${c.name}</span><span class="sample-badge">行业示例数据</span></div><section class="scenario-heading"><p class="eyebrow">WORKSPACE ${c.num} <span> / ${c.industry}</span></p><h1>${c.title}</h1><p>${c.desc}</p></section><div class="biz-toolbar"><span><i class="live-dot"></i> 演示基准日 2026-09-18 · 数据为固定样例</span>${btn('reset', '重置此工作台')}</div><div class="biz-workspace" aria-busy="${s.busy}">${({ sales: renderSales, inquiries: renderInquiries, quotes: renderQuotes, delivery: renderDelivery, costing: renderCosting })[key]()}</div><section class="demo-benefits"><div><p class="eyebrow">接上已有系统</p><h2>${c.system}</h2><p>读取业务记录 → 提出有依据的建议 → 人工确认 → 形成执行草稿</p></div>${btn('brief', '聊聊我的业务 ↗')}</section>`;
     api.refreshIcons();
   }
   function renderSales() {
@@ -82,7 +82,7 @@ export function mountBusinessDemo(host, key, api) {
   function exportSaved() {
     const records = Object.values(s.saved);
     if (!records.length) return api.notify('请先复核并保存一份业务草稿。');
-    api.download(`落点AI-${c.name}.txt`, `落点 AI / ${c.name}\n虚构样例 · 本地规则演示 · 未连接或写入 CRM / ERP\n演示基准日：2026-09-18\n\n${records.map(r => formatRecord(r)).join('\n\n')}`);
+    api.download(`落点AI-${c.name}.txt`, `落点 AI / ${c.name}\n示例数据 · 在线演算 · 未连接或写入 CRM / ERP\n演示基准日：2026-09-18\n\n${records.map(r => formatRecord(r)).join('\n\n')}`);
   }
   function save(action) {
     if (!s.ready || s.busy || !s.reviewed) return api.notify('请先完成分析，并勾选复核确认。');

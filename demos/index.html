@@ -3,21 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="亲手体验微信转 CRM、销售跟进、询盘转商机、报价版本、订单交付、成本测算、订单变更与单据核对八个场景。面向平湖箱包、服装、童车与制造企业的交互场景演示。" />
+    <meta name="description" content="在线体验微信转 CRM、销售跟进、询盘转商机、报价版本、订单交付、成本测算、订单变更与单据核对八个业务场景。面向全国各行业企业的交互式业务场景。" />
     <meta name="theme-color" content="#244c3d" />
     <link rel="icon" href="data:," />
     <title>行业体验台 · 落点 AI</title>
   </head>
   <body class="demo-body">
     <a class="skip-link" href="#demo-main">跳至体验内容</a>
-    <header class="demo-header"><a class="brand" href="/">落点 <span>AI</span></a><span class="demo-header-label">行业体验台</span><nav aria-label="主导航"><a href="/">返回首页</a><a href="/cases/">方案库 <span aria-hidden="true">↗</span></a></nav></header>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/">落点 <span>AI</span></a>
+        <span class="brand-caption">企业流程改进与 AI 应用</span>
+        <nav class="primary-nav" aria-label="主导航">
+          <a href="/">官网</a>
+          <a href="/demos/" data-active>行业体验台</a>
+          <a href="/cases/">案例库</a>
+          <a href="/about/">关于我们</a>
+        </nav>
+        <button class="button contact-button" data-open-brief>咨询项目 <i data-lucide="arrow-up-right"></i></button>
+      </div>
+    </header>
     <div class="demo-shell">
-      <aside class="demo-sidebar"><p class="eyebrow">PINGHU · BUSINESS LAB</p><h2>从你熟悉的<br />一件事开始。</h2><p class="sidebar-desc">把散落的业务信息，<br />接上已有的管理系统。</p><nav id="scenario-nav" aria-label="选择演示场景"></nav><div class="sidebar-foot"><span class="live-dot"></span> 可交互 · 可修改 · 可导出<p>箱包 / 服装 / 童车 / 制造</p></div></aside>
-      <main id="demo-main" tabindex="-1"><div id="demo-app"></div><div class="demo-disclosure"><i data-lucide="info"></i><p>本地规则演示 · 全部为虚构样例，未连接大模型、微信或 CRM / ERP。输入仅在当前页面处理；复杂表述需人工核实。刷新页面后恢复样例。</p></div></main>
+      <aside class="demo-sidebar"><p class="eyebrow">BUSINESS LAB</p><h2>从你熟悉的<br />一件事开始。</h2><p class="sidebar-desc">把散落的业务信息，<br />接上已有的管理系统。</p><nav id="scenario-nav" aria-label="选择演示场景"></nav><div class="sidebar-foot"><span class="live-dot"></span> 可交互 · 可修改 · 可导出<p>箱包 / 服装 / 童车 / 制造</p></div></aside>
+      <main id="demo-main" tabindex="-1"><div id="demo-app"></div><div class="demo-disclosure"><i data-lucide="info"></i><p>在线体验 · 采用行业典型数据，在本页即时演算，输入仅在当前页面处理。正式上线时按你的实际数据与业务系统对接；复杂表述仍建议人工复核。刷新页面后恢复示例。</p></div></main>
     </div>
     <div id="demo-toast" role="status" aria-live="polite"></div>
     <dialog id="export-dialog" aria-labelledby="export-title"><div class="dialog-top"><span class="eyebrow">本地导出</span><button class="icon-button" data-action="close-export" aria-label="关闭导出预览">×</button></div><h2 id="export-title">复核记录，带走就能看。</h2><p class="muted">包含输入依据与处理结论。可以下载文件，也可以选中文字复制。</p><label for="export-preview">文件内容预览</label><textarea id="export-preview" readonly rows="12" spellcheck="false"></textarea><a class="button solid" id="export-download">下载文件 <i data-lucide="download"></i></a><p id="export-status" role="status"></p></dialog>
-    <dialog id="brief-dialog" aria-labelledby="brief-title"><div class="dialog-top"><span class="eyebrow">从一个流程开始</span><button class="icon-button" data-action="close-brief" aria-label="关闭需求单">×</button></div><h2 id="brief-title">这也是你每天在做的事？</h2><p class="muted">带着这份沟通单，讨论你的实际流程。信息只下载到本地。</p><form id="demo-brief"><label>企业或团队<input name="company" required maxlength="100" placeholder="例如：平湖某箱包企业" /></label><label>现在最费时间的一步<textarea name="problem" required maxlength="2000" rows="3"></textarea></label><label>现有系统（选填）<input name="system" maxlength="200" placeholder="例如：金蝶 ERP、销售 CRM、Excel" /></label><button class="button solid" type="submit">下载沟通单 <i data-lucide="download"></i></button><p id="brief-status" role="status"></p></form></dialog>
+    <dialog id="brief-dialog" aria-labelledby="brief-title"><div class="dialog-top"><span class="eyebrow">从一个流程开始</span><button class="icon-button" data-action="close-brief" aria-label="关闭需求单">×</button></div><h2 id="brief-title">这也是你每天在做的事？</h2><p class="muted">填写后直接发送到我们的邮箱，我们会尽快联系你，一起讨论你的实际流程。</p><form id="demo-brief"><label>企业或团队<input name="company" required maxlength="100" placeholder="例如：某贸易 / 制造 / 服务企业" /></label><label>现在最费时间的一步<textarea name="problem" required maxlength="2000" rows="3"></textarea></label><label>现有系统（选填）<input name="system" maxlength="200" placeholder="例如：CRM、ERP、OA、Excel 等" /></label><button class="button solid" type="submit">发送咨询 <i data-lucide="arrow-up-right"></i></button><p id="brief-status" role="status"></p></form></dialog>
     <script type="module" src="/src/demos.js"></script>
   </body>
 </html>

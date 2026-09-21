@@ -76,7 +76,7 @@ function card(item) {
     <p class="card-summary">${esc(item.problem)}</p>
     <div class="card-tags">${item.tags.map((tag) => `<span>${esc(tag)}</span>`).join("")}</div>
     <div class="card-facts"><span>${esc(item.department)}</span><span>实施难度 · ${item.difficulty}</span></div>
-    <div class="card-footer"><a href="${urlWith({ case: item.id })}" data-route class="read-link">查看详情 ${icon("arrow-up-right")}</a><span class="study-label">参考方案</span>${bookmark(item)}</div>
+    <div class="card-footer"><a href="${urlWith({ case: item.id })}" data-route class="read-link">查看详情 ${icon("arrow-up-right")}</a><span class="study-label">行业方案</span>${bookmark(item)}</div>
   </article>`;
 }
 function filterSelect(id, label, values, current) {
@@ -148,11 +148,11 @@ function renderResults() {
     ${chips.length ? `<div class="active-filters">${chips.map(([key, value]) => `<button data-remove-filter="${key}" aria-label="移除筛选：${esc(value)}">${esc(value)} ${icon("x")}</button>`).join("")}<button class="text-button" data-clear-filters>清除筛选</button></div>` : ""}
     ${featured ? `<article class="featured-study">
       <div class="featured-copy"><p class="eyebrow"><span class="square-mark"></span>本期选读 / MANUFACTURING</p><h2><a href="${urlWith({ case: first.id })}" data-route>${esc(first.insight)}</a></h2><p>以刀具管理为起点，把机台、批次与质检记录连接起来。</p><a class="read-link" href="${urlWith({ case: first.id })}" data-route>阅读专题 ${icon("arrow-up-right")}</a></div>
-      <div class="featured-path" aria-label="解决步骤"><span class="case-number">SCENARIO STUDY / 01</span><ol><li><span>01</span><strong>留下记录</strong><small>机台 / 刀具 / 批次</small></li><li><span>02</span><strong>提前提醒</strong><small>使用次数 / 质量记录</small></li><li><span>03</span><strong>人工确认</strong><small>换刀 / 质量放行</small></li></ol><span class="study-label">参考方案</span></div>
+      <div class="featured-path" aria-label="解决步骤"><span class="case-number">SCENARIO STUDY / 01</span><ol><li><span>01</span><strong>留下记录</strong><small>机台 / 刀具 / 批次</small></li><li><span>02</span><strong>提前提醒</strong><small>使用次数 / 质量记录</small></li><li><span>03</span><strong>人工确认</strong><small>换刀 / 质量放行</small></li></ol><span class="study-label">行业方案</span></div>
     </article>` : ""}
     ${visible.length ? `<div class="case-grid ${state.view === "list" ? "list-view" : ""}">${visible.map(card).join("")}</div>` :
       `<div class="empty-state">${icon(state.savedOnly ? "bookmark" : "search")}<h3>${state.savedOnly && !saved.size ? "还没有收藏的案例" : "没有找到匹配的案例"}</h3><p>${state.savedOnly && !saved.size ? "先从感兴趣的业务场景开始。" : "试试其他关键词，或移除部分筛选条件。"}</p><button class="button" data-clear-filters>浏览全部案例 ${icon("arrow-right")}</button></div>`}
-    <div class="catalog-bottom"><p>以下内容基于典型业务场景整理，不代表已交付客户成果。</p>${results.length ? `<nav class="pagination" aria-label="案例分页">${page > 1 ? `<a href="${urlWith({ page: page - 1 })}" data-route aria-label="上一页">${icon("chevron-left")}</a>` : `<button disabled aria-label="上一页">${icon("chevron-left")}</button>`}${paginationItems(page, pages).map((item) => item === "ellipsis" ? `<span aria-hidden="true">…</span>` : `<a href="${urlWith({ page: item })}" data-route ${page === item ? 'aria-current="page"' : ""}>${item}</a>`).join("")}${page < pages ? `<a href="${urlWith({ page: page + 1 })}" data-route aria-label="下一页">${icon("chevron-right")}</a>` : `<button disabled aria-label="下一页">${icon("chevron-right")}</button>`}</nav>` : ""}</div>`;
+    <div class="catalog-bottom"><p>以下方案基于行业典型业务场景整理，可按你的实际情况调整落地。</p>${results.length ? `<nav class="pagination" aria-label="案例分页">${page > 1 ? `<a href="${urlWith({ page: page - 1 })}" data-route aria-label="上一页">${icon("chevron-left")}</a>` : `<button disabled aria-label="上一页">${icon("chevron-left")}</button>`}${paginationItems(page, pages).map((item) => item === "ellipsis" ? `<span aria-hidden="true">…</span>` : `<a href="${urlWith({ page: item })}" data-route ${page === item ? 'aria-current="page"' : ""}>${item}</a>`).join("")}${page < pages ? `<a href="${urlWith({ page: page + 1 })}" data-route aria-label="下一页">${icon("chevron-right")}</a>` : `<button disabled aria-label="下一页">${icon("chevron-right")}</button>`}</nav>` : ""}</div>`;
   refreshIcons();
 }
 
@@ -169,7 +169,7 @@ function renderDetail(item) {
   main.innerHTML = `<div class="page-container detail-page">
     <nav class="breadcrumb" aria-label="面包屑"><a href="${returnUrl}" data-route>${icon("arrow-left")} 返回案例库</a><span>/</span><a href="${urlWith({ industry: item.industry, case: null, page: null })}" data-route>${esc(item.industry)}</a><span>/</span><span>研究 ${item.number}</span></nav>
     <header class="detail-heading">
-      <div class="detail-kicker"><span class="industry-label">${esc(item.industry)}</span><span>SCENARIO STUDY / ${item.number}</span><span class="study-label">参考方案</span></div>
+      <div class="detail-kicker"><span class="industry-label">${esc(item.industry)}</span><span>SCENARIO STUDY / ${item.number}</span><span class="study-label">行业方案</span></div>
       <h1>${esc(item.title)}</h1><p>${esc(item.insight)}。</p>
       <div class="detail-meta"><span>落点 AI 场景方案</span><span>更新于 ${item.updated}</span><span>${item.department}</span>
         <div class="detail-actions">${bookmark(item)}${iconButton("link", "复制案例链接", "data-share")}${iconButton("printer", "打印 / 保存为 PDF", "data-print")}</div>
@@ -179,7 +179,7 @@ function renderDetail(item) {
       <aside class="reading-sidebar"><p class="eyebrow">CONTENTS</p><nav aria-label="文章目录">${chapters.map(([id, title], i) => `<a href="#${id}" ${i === 0 ? 'aria-current="location"' : ""}><span>${String(i + 1).padStart(2, "0")}</span>${title}</a>`).join("")}</nav><a class="text-button" href="${returnUrl}" data-route>${icon("arrow-left")} 返回索引</a></aside>
       <article class="case-article">
         <section id="overview" class="executive-summary"><p class="eyebrow">EXECUTIVE SUMMARY / 研究摘要</p><h2>${esc(item.insight)}</h2><p>${esc(item.problem)}</p><div class="summary-facts"><div><span>切入方式</span><strong>${item.type}</strong></div><div><span>实施难度</span><strong>${item.difficulty}<small> / 初步判断</small></strong></div><div><span>阅读时间</span><strong>${item.readingMinutes} 分钟<small> / 约</small></strong></div></div></section>
-        <p class="editor-note">本页以典型业务场景为例。人物与企业背景均为虚构，指标需在实际试点中测量。</p>
+        <p class="editor-note">本页基于行业典型业务场景整理，具体指标需结合你的实际数据在试点中测量。</p>
         <section id="story" class="article-section story-section">${sectionTitle(2, "先看一个用户故事")}<div class="story-persona"><div><span>${esc(item.userStory.label)}</span><strong>${esc(item.userStory.persona.name)} · ${esc(item.userStory.persona.role)}</strong></div><h3>${esc(item.userStory.headline)}</h3><p>${esc(item.userStory.opening)}</p></div><blockquote>${esc(item.userStory.plainProblem)}</blockquote><div class="story-turn"><span>事情的转折</span><p>${esc(item.userStory.turningPoint)}</p></div><ol class="story-scenes">${item.userStory.scenes.map((scene, i) => `<li><span>${String(i + 1).padStart(2, "0")}</span><div><h3>${esc(scene.title)}</h3><p>${esc(scene.text)}</p></div></li>`).join("")}</ol><div class="story-before-after"><article><span>BEFORE / 以前</span><p>${esc(item.userStory.beforeAfter.before)}</p></article><article><span>AFTER / 现在</span><p>${esc(item.userStory.beforeAfter.after)}</p></article></div><div class="story-ending"><h3>处理方式发生了哪些变化</h3><p>${esc(item.userStory.ending)}</p><ul>${item.userStory.takeaways.map((entry) => `<li>${icon("check")} ${esc(entry)}</li>`).join("")}</ul></div></section>
         <section id="context" class="article-section">${sectionTitle(3, "业务背景与问题拆解")}<p>${esc(item.context)}</p><dl class="context-facts"><div><dt>参与角色</dt><dd>${esc(item.roles)}</dd></div><div><dt>业务责任人</dt><dd>${esc(item.owner)}</dd></div><div><dt>目前做法</dt><dd>${esc(item.before)}</dd></div></dl><div class="problem-grid">${item.problemBreakdown.map((part, i) => `<article><span>${String(i + 1).padStart(2, "0")}</span><h3>${esc(part.title)}</h3><p>${esc(part.detail)}。</p></article>`).join("")}</div><div class="assumption-block"><strong>阅读前提</strong><ul>${item.assumptions.map((assumption) => `<li>${esc(assumption)}</li>`).join("")}</ul></div></section>
         <section id="architecture" class="article-section">${sectionTitle(4, "方案模块与范围")}<p>${esc(item.solution)}</p><div class="module-list">${item.solutionModules.map((module, i) => `<article><span>${String(i + 1).padStart(2, "0")}</span><div><h3>${esc(module.name)}</h3><p>${esc(module.description)}</p><small>责任：${esc(module.owner)}</small></div></article>`).join("")}</div><div class="scope-grid"><div><h3>试点包含</h3><ul>${item.scope.included.map((entry) => `<li>${icon("check")} ${esc(entry)}</li>`).join("")}</ul></div><div><h3>本阶段不包含</h3><ul>${item.scope.excluded.map((entry) => `<li>${esc(entry)}</li>`).join("")}</ul></div></div></section>
@@ -207,10 +207,10 @@ function renderDetail(item) {
 
 let renderVersion = 0;
 function finishRender() {
-  document.querySelector("#saved-count").textContent = saved.size;
+  const savedCount = document.querySelector("#saved-count");
+  if (savedCount) savedCount.textContent = saved.size;
   document.querySelectorAll("[data-nav]").forEach((link) => {
-    const active = link.dataset.nav === (params().get("saved") === "1" ? "saved" : "library");
-    link.toggleAttribute("data-active", active);
+    link.toggleAttribute("data-active", link.dataset.nav === "library");
   });
   refreshIcons();
 }
@@ -272,7 +272,8 @@ document.addEventListener("click", async (event) => {
     if (saved.has(id)) saved.delete(id); else saved.add(id);
     try { localStorage.setItem("luodian-saved", JSON.stringify([...saved])); }
     catch { notify("本次收藏已更新，但浏览器未允许持久保存。"); }
-    document.querySelector("#saved-count").textContent = saved.size;
+    const savedCountEl = document.querySelector("#saved-count");
+    if (savedCountEl) savedCountEl.textContent = saved.size;
     if (!currentCase) renderResults();
     else {
       document.querySelectorAll(`[data-save="${id}"]`).forEach((control) => {
@@ -298,7 +299,7 @@ document.addEventListener("click", async (event) => {
   else if (button.hasAttribute("data-contact")) {
     document.querySelector("#contact-form").reset();
     document.querySelector("#contact-status").textContent = "";
-    if (currentCase) document.querySelector('[name="workflow"]').value = `参考方案：${currentCase.title}\n我的业务现状：`;
+    if (currentCase) document.querySelector('[name="workflow"]').value = `关注方案：${currentCase.title}\n我的业务现状：`;
     dialog.showModal();
   } else if (button.hasAttribute("data-close-dialog")) dialog.close();
 });
@@ -321,20 +322,40 @@ dialog.addEventListener("click", (event) => {
   const rect = dialog.getBoundingClientRect();
   if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
 });
-document.querySelector("#contact-form").addEventListener("submit", (event) => {
+document.querySelector("#contact-form").addEventListener("submit", async (event) => {
   event.preventDefault();
-  const formData = new FormData(event.currentTarget);
+  const form = event.currentTarget;
+  const status = document.querySelector("#contact-status");
+  const submit = form.querySelector("button[type=submit]");
+  const formData = new FormData(form);
   const company = String(formData.get("company")).trim();
   const workflow = String(formData.get("workflow")).trim();
   if (!company || !workflow) {
-    document.querySelector("#contact-status").textContent = "请填写企业与具体流程，内容不能只有空格。";
+    status.textContent = "请填写企业与具体流程，内容不能只有空格。";
     return;
   }
-  const text = `落点 AI / 项目沟通需求单\n\n企业或团队：${company}\n联系方式：${formData.get("contact") || "未填写"}\n\n业务流程：\n${workflow}\n\n参考案例：${currentCase?.title || "未选择"}\n\n待确认：业务频次、当前耗时、数据权限、人工复核责任、验收标准。\n`;
-  const url = URL.createObjectURL(new Blob([text], { type: "text/plain;charset=utf-8" }));
-  const download = document.createElement("a");
-  download.href = url; download.download = "luodian-project-brief.txt"; download.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-  document.querySelector("#contact-status").textContent = "需求单已下载，信息未上传。";
+  submit.disabled = true;
+  status.textContent = "正在发送…";
+  try {
+    const response = await fetch("https://formsubmit.co/ajax/pardus.team.william@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        _subject: `落点 AI 项目咨询：${company}`,
+        _captcha: "false",
+        企业或团队: company,
+        联系方式: formData.get("contact") || "未填写",
+        业务流程: workflow,
+        参考案例: currentCase?.title || "未选择",
+      }),
+    });
+    if (!response.ok) throw new Error(String(response.status));
+    form.reset();
+    status.textContent = "已发送，我们会尽快联系你。";
+  } catch (error) {
+    status.textContent = "发送失败，请直接邮件或微信联系：pardus.team.william@gmail.com / sopia101。";
+  } finally {
+    submit.disabled = false;
+  }
 });
 render();

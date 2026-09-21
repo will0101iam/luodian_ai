@@ -1,7 +1,9 @@
 .home-body { background: white; }
 .home-container { width: min(1280px, calc(100% - 96px)); margin-inline: auto; }
-.home-header { position: absolute; width: 100%; color: white; background: rgb(13 27 21 / 76%); border-color: rgb(255 255 255 / 18%); backdrop-filter: blur(14px); }
+.home-header { position: fixed; top: 0; z-index: 30; width: 100%; color: white; background: rgb(13 27 21 / 76%); border-color: rgb(255 255 255 / 18%); backdrop-filter: blur(14px); }
 .home-header .brand, .home-header .primary-nav a { color: white; }
+.home-header .primary-nav a[data-active] { font-weight: 600; }
+.home-header .primary-nav a[data-active]::after { background: white; }
 .home-header .brand-caption { color: rgb(255 255 255 / 64%); border-color: rgb(255 255 255 / 22%); }
 .home-header .contact-button { color: white; border-color: rgb(255 255 255 / 55%); }
 .home-header .primary-nav a:hover { color: white; }

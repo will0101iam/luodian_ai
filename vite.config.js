@@ -8,6 +8,7 @@ export default defineConfig({
         home: resolve(import.meta.dirname, "index.html"),
         cases: resolve(import.meta.dirname, "cases/index.html"),
         demos: resolve(import.meta.dirname, "demos/index.html"),
+        about: resolve(import.meta.dirname, "about/index.html"),
       },
     },
   },

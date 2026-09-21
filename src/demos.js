@@ -49,7 +49,7 @@ function render() {
   const c = configs[active];
   renderNav();
   if (businessConfigs[active]) { mountBusinessDemo(app, active, { refreshIcons, notify, download, brief: openBrief }); return; }
-  app.innerHTML = `<div class="demo-breadcrumb"><span>行业体验台</span>${icon('chevron-right')}<span>${c.name}</span><span class="sample-badge">虚构业务样例</span></div>
+  app.innerHTML = `<div class="demo-breadcrumb"><span>行业体验台</span>${icon('chevron-right')}<span>${c.name}</span><span class="sample-badge">行业示例数据</span></div>
     <section class="scenario-heading"><p class="eyebrow">SCENARIO ${c.num} <span> / ${c.industry}</span></p><h1>${c.title}</h1><p>${c.desc}</p></section>
     <div class="demo-progress" aria-label="体验步骤"><span class="current"><b>1</b> 放入业务材料</span><i></i><span data-step="2"><b>2</b> 检查整理结果</span><i></i><span data-step="3"><b>3</b> 确认并导出</span></div>
     <div class="demo-workbench"><section class="input-panel panel"><div class="panel-heading"><div><span class="panel-kicker">业务输入</span><h2>${c.inputTitle}</h2></div><button class="icon-button" data-action="reset" aria-label="重置当前样例" title="重置当前样例">${icon('rotate-ccw')}</button></div><div id="input-content">${renderInput()}</div><div class="input-actions"><p>${c.inputHint}</p><button class="button solid run-button" data-action="run">${icon('play')}${c.run}${icon('arrow-right')}</button><p id="input-error" role="alert"></p></div></section>
@@ -81,7 +81,7 @@ function renderChat(s, evidence = '') {
     return index < 0 ? esc(text) : `${esc(text.slice(0, index))}<mark>${esc(evidence)}</mark>${esc(text.slice(index + evidence.length))}`;
   };
   const metadataMatch = evidence && /^(客户|公司)[：:]/.test(evidence);
-  return `<div class="wechat-window" aria-label="微信风格的虚构聊天记录"><div class="wechat-titlebar"><span aria-hidden="true">${icon('chevron-left')}</span><div class="${metadataMatch ? 'chat-evidence' : ''}" ${metadataMatch ? 'tabindex="-1" data-chat-evidence' : ''}><strong>${esc(customer)}</strong><small>${esc(company)}</small></div><span aria-hidden="true">${icon('ellipsis')}</span></div><div class="wechat-messages"><div class="chat-timestamp">09:41 <span>· 样例会话</span></div><div class="wechat-message outgoing"><span class="wechat-avatar sales-avatar" aria-label="销售头像">我</span><div class="wechat-bubble">您好，方便把这次的采购需求发我一下吗？</div></div>${messages.map((message, i) => `<div class="wechat-message incoming"><span class="wechat-avatar customer-avatar" aria-label="${esc(customer)}头像">${esc(customer.slice(0, 1))}</span><div class="wechat-message-body">${i === 0 ? `<small class="chat-sender">${esc(customer)}</small>` : ''}<div class="wechat-bubble ${evidence && message.includes(evidence) ? 'chat-evidence' : ''}" ${evidence && message.includes(evidence) ? 'tabindex="-1" data-chat-evidence' : ''}>${highlight(message)}</div></div></div>`).join('') || '<p class="chat-no-messages">还没有客户消息，点击下方修改聊天内容。</p>'}<div class="chat-record-end">以上为客户沟通样例</div></div><div class="wechat-composer" aria-hidden="true">${icon('mic')}<span>聊天记录预览</span>${icon('smile')}${icon('circle-plus')}</div></div>`;
+  return `<div class="wechat-window" aria-label="微信风格的示例聊天记录"><div class="wechat-titlebar"><span aria-hidden="true">${icon('chevron-left')}</span><div class="${metadataMatch ? 'chat-evidence' : ''}" ${metadataMatch ? 'tabindex="-1" data-chat-evidence' : ''}><strong>${esc(customer)}</strong><small>${esc(company)}</small></div><span aria-hidden="true">${icon('ellipsis')}</span></div><div class="wechat-messages"><div class="chat-timestamp">09:41 <span>· 样例会话</span></div><div class="wechat-message outgoing"><span class="wechat-avatar sales-avatar" aria-label="销售头像">我</span><div class="wechat-bubble">您好，方便把这次的采购需求发我一下吗？</div></div>${messages.map((message, i) => `<div class="wechat-message incoming"><span class="wechat-avatar customer-avatar" aria-label="${esc(customer)}头像">${esc(customer.slice(0, 1))}</span><div class="wechat-message-body">${i === 0 ? `<small class="chat-sender">${esc(customer)}</small>` : ''}<div class="wechat-bubble ${evidence && message.includes(evidence) ? 'chat-evidence' : ''}" ${evidence && message.includes(evidence) ? 'tabindex="-1" data-chat-evidence' : ''}>${highlight(message)}</div></div></div>`).join('') || '<p class="chat-no-messages">还没有客户消息，点击下方修改聊天内容。</p>'}<div class="chat-record-end">以上为客户沟通样例</div></div><div class="wechat-composer" aria-hidden="true">${icon('mic')}<span>聊天记录预览</span>${icon('smile')}${icon('circle-plus')}</div></div>`;
 }
 
 function cancelProcessing() {
@@ -223,10 +223,10 @@ function exportResult() {
   if (!s.confirmed) return;
   if (active === 'reconcile') {
     const rows = [['演示性质', '物料编码', '名称', '订购数量', '实收数量', '对账数量', '对账金额', '差异', '处理结论', '备注', '采购依据', '收货依据', '对账依据']];
-    s.result.results.forEach((r) => rows.push(['虚构样例 / 本地规则核对 / 未写入ERP', r.sku, r.name, r.ordered, r.received, r.billed, r.amount, r.issues.join('；'), r.resolution || '规则核对一致', r.note, ...Object.values(r.groups).map((g) => g.map((v) => `${v.ref} ${v.sku} ${v.name} ${v.qty}件 单价${v.price}`).join('；'))]));
+    s.result.results.forEach((r) => rows.push(['示例数据 / 在线演算 / 未写入业务系统', r.sku, r.name, r.ordered, r.received, r.billed, r.amount, r.issues.join('；'), r.resolution || '规则核对一致', r.note, ...Object.values(r.groups).map((g) => g.map((v) => `${v.ref} ${v.sku} ${v.name} ${v.qty}件 单价${v.price}`).join('；'))]));
     download('落点AI-单据核对-演示草稿.csv', '\uFEFF' + rows.map((r) => r.map(csvCell).join(',')).join('\r\n'), 'text/csv;charset=utf-8');
   } else {
-    const lines = [`落点 AI / ${configs[active].name} / 已复核演示草稿`, '虚构样例 · 本地规则演示 · 未写入 CRM / ERP', `复核时间：${new Date().toLocaleString('zh-CN')}`, '', '【沟通原文】', s.text, '', '【复核结果】'];
+    const lines = [`落点 AI / ${configs[active].name} / 已复核演示草稿`, '示例数据 · 在线演算 · 未写入 CRM / ERP', `复核时间：${new Date().toLocaleString('zh-CN')}`, '', '【沟通原文】', s.text, '', '【复核结果】'];
     if (active === 'crm') {
       s.result.fields.forEach((f) => lines.push(`${f.label}：${f.value.trim() || '待补充'}`, `  原文依据：${f.evidence || '无，需人工补充确认'}`, ...(f.previous ? [`  样例原档案：${f.previous}`] : [])));
       lines.push('', '【待确认提示】', ...s.result.warnings);
@@ -311,17 +311,42 @@ function openBrief() {
   document.querySelector('#brief-dialog').showModal();
 }
 
+document.querySelector('[data-open-brief]')?.addEventListener('click', () => openBrief());
 document.querySelector('[data-action="close-brief"]').addEventListener('click', () => document.querySelector('#brief-dialog').close());
 document.querySelector('[data-action="close-export"]').addEventListener('click', () => document.querySelector('#export-dialog').close());
 document.querySelector('#export-download').addEventListener('click', () => {
   document.querySelector('#export-status').textContent = '已发起下载，请在浏览器下载记录中查看；也可选中上方内容复制。';
 });
-document.querySelector('#demo-brief').addEventListener('submit', (event) => {
+document.querySelector('#demo-brief').addEventListener('submit', async (event) => {
   event.preventDefault();
-  const data = new FormData(event.currentTarget);
-  if (!String(data.get('company')).trim() || !String(data.get('problem')).trim()) { document.querySelector('#brief-status').textContent = '企业与流程说明不能只填空格。'; return; }
-  download('落点AI-流程沟通单.txt', `落点 AI / 流程沟通单\n\n场景：${configs[active].name}\n企业：${data.get('company')}\n现有系统：${data.get('system') || '待沟通'}\n\n${data.get('problem')}\n\n一起确认：处理频次、耗时、样本格式、系统接口、异常责任人和试点验收方式。`);
-  document.querySelector('#brief-status').textContent = '沟通单已下载到本地，未提交或发送。';
+  const form = event.currentTarget;
+  const status = document.querySelector('#brief-status');
+  const submit = form.querySelector('button[type=submit]');
+  const data = new FormData(form);
+  if (!String(data.get('company')).trim() || !String(data.get('problem')).trim()) { status.textContent = '企业与流程说明不能只填空格。'; return; }
+  submit.disabled = true;
+  status.textContent = '正在发送…';
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/pardus.team.william@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: `落点 AI 场景咨询：${data.get('company')}`,
+        _captcha: 'false',
+        场景: configs[active].name,
+        企业或团队: data.get('company'),
+        现有系统: data.get('system') || '待沟通',
+        流程说明: data.get('problem'),
+      }),
+    });
+    if (!response.ok) throw new Error(String(response.status));
+    form.reset();
+    status.textContent = '已发送，我们会尽快联系你。';
+  } catch (error) {
+    status.textContent = '发送失败，请直接邮件或微信联系：pardus.team.william@gmail.com / sopia101。';
+  } finally {
+    submit.disabled = false;
+  }
 });
 window.addEventListener('hashchange', () => {
   if (!Object.hasOwn(configs, location.hash.slice(1))) return;

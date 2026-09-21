@@ -7,7 +7,7 @@ export const opportunities = [
 export const inquiries = [
   { id: 'I01', channel: '展会', company: 'NordWay Travel', contact: 'Anna · anna@example.com', product: '20 寸登机箱', qty: 3000, destination: '德国', note: '展位沟通：要轻量款，3,000 个，环保包装；最好 11 月到德国。是否沿用上次报价？', missing: ['确认到港日还是出厂日', '确认环保包装标准'], duplicate: 'CRM 已有同名客户，存在 S01 报价中商机；需人工核实是否同一项目。' },
   { id: 'I02', channel: '邮件', company: 'Sunny Wheels', contact: 'Leo · leo@example.com', product: '双驱童车', qty: 600, destination: '西班牙', note: 'We need 600 ride-on cars for Spain. Please quote 12V and 24V options with shipping. Delivery date to be discussed.', missing: ['明确 12V / 24V 配置', '确认目的港及贸易条款', '确认认证要求和交期'], duplicate: '' },
-  { id: 'I03', channel: '官网', company: '远帆制造（样例）', contact: '周先生 · 联系方式待补充', product: '立式加工中心', qty: 2, destination: '嘉兴', note: '加工铝件，考虑采购两台。能否先看加工效果？图纸可以后续发，想了解设备和服务。', missing: ['补充可联系的电话或邮箱', '获取图纸、精度及节拍', '确认预算和采购时间'], duplicate: '' },
+  { id: 'I03', channel: '官网', company: '远帆制造（样例）', contact: '周先生 · 联系方式待补充', product: '立式加工中心', qty: 2, destination: '苏州', note: '加工铝件，考虑采购两台。能否先看加工效果？图纸可以后续发，想了解设备和服务。', missing: ['补充可联系的电话或邮箱', '获取图纸、精度及节拍', '确认预算和采购时间'], duplicate: '' },
 ];
 export const quoteVersions = [
   { id: 'V1', date: '09-08', qty: 3000, price: 24, cost: 18, currency: 'USD', term: 'FOB 宁波', pack: '标准纸箱', freight: 0, note: '首轮报价，客户尚未确认包装。' },
